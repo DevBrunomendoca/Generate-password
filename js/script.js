@@ -30,7 +30,7 @@ const generatePassword = (getLetterLowerCase, getLetterUpperCase, getNumber, get
 
   let password = ""
 
-  const passwordLength = + lengthInput.value
+  const passwordLength = +lengthInput.value.replace(/[^0-9]/g, "")
 
   const generators = []
 
@@ -85,6 +85,7 @@ generatePasswordButton.addEventListener("click", (ev) => {
   generatePassword(getLetterLowerCase, getLetterUpperCase, getNumber, getSymbols)
 })
 
-openCloseGeneratorButton.addEventListener("click", () =>{
+openCloseGeneratorButton.addEventListener("click", (ev) =>{
+  ev.preventDefault
   generatePasswordContainer.classList.toggle("hide")
 }) 
